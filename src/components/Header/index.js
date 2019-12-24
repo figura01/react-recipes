@@ -13,9 +13,9 @@ const Header = ({ categories, onCategoryClick }) => (
         <a
           onClick={onCategoryClick(category)}
           className="nav-link"
-          key={category}
+          key={category.label}
         >
-          {category}
+          {category.label}
         </a>
       ))}
     </nav>
@@ -25,7 +25,10 @@ const Header = ({ categories, onCategoryClick }) => (
 Header.propTypes = {
   onCategoryClick: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(
-    PropTypes.string.isRequired,
+    PropTypes.shape({
+      route: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }).isRequired,
   ).isRequired,
 };
 

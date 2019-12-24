@@ -3,6 +3,7 @@ import React from 'react';
 
 // == Import : local
 import './app.scss';
+import { filterPostsByCategory } from 'src/utils/selectors';
 // Components
 import Header from 'src/components/Header';
 import Posts from 'src/components/Posts';
@@ -21,9 +22,12 @@ class App extends React.Component {
     // Si le state change, le render() du composant est relancé
     //  Point de départ : state initial
     this.state = {
-      currentCategory: 'all',
+      currentCategory: {
+        route: '/',
+        label: 'Accueil',
+      },
     };
-    console.log(this);
+    // console.log(this);
 
     // On veut transmettre / fournir la valeur de this (objet / instance courante)
     // à nos méthodes persos (handleClick, handle....)
@@ -61,9 +65,13 @@ class App extends React.Component {
     const { currentCategory } = this.state;
 
     // Si la category est all je veux tous les posts sinon je filtre
-    const filteredPosts = currentCategory === 'all'
-      ? postsData
-      : postsData.filter((post) => post.category === currentCategory);
+    // const filteredPosts = currentCategory.label === 'Accueil'
+    //   ? postsData
+    //   : postsData.filter((post) => post.category === currentCategory);
+
+    // on range la fonction dans un fichier d'outils
+
+    const filteredPosts = filterPostsByCategory(postsData, currentCategory);
 
     return (
       <div id="blog">
