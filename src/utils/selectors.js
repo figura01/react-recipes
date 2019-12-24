@@ -1,4 +1,4 @@
-// JavaDOC
+// JavaDOC, commence par "/**", documentation d'une fonction
 /**
  * Get the posts linked to a given category
  * @param {Array} posts The posts to filter
@@ -11,7 +11,10 @@ export const filterPostsByCategory = (posts, category) => {
 
   const filteredPosts = category.label === 'Accueil'
     ? posts
-    : posts.filter((post) => post.category === category);
+    : posts.filter((post) => {
+      // console.log(`On compare ${post.category} avec ${category}`);
+      return post.category === category.label;
+    });
 
   return filteredPosts;
 };

@@ -1,6 +1,7 @@
 // == Import : npm
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
 // == Import : local
@@ -15,7 +16,12 @@ import App from 'src/components/App';
 
 // Le JSX s'adapte. Il évalue et appelle App de la bonne manière
 // Ici <App /> si c'est une fonction : App() si c'est une classe : new App()
-const rootComponent = <App />;
+// React-router : on met le composant Router autour de notre application
+const rootComponent = (
+  <Router>
+    <App />
+  </Router>
+);
 
 // 2. La cible du DOM (là où la structure doit prendre vie dans le DOM)
 const target = document.getElementById('root');
