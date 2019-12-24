@@ -1,6 +1,6 @@
 // == Import : npm
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 // == Import : local
 import './app.scss';
@@ -20,9 +20,16 @@ const App = () => (
 
   // Switch : l'ordre des Routes est important, on s'arrête à la première qui "match"
   // On peut avoir une dernière Route sans path => erreur 404
+
+  // on voudrait rediriger /jquery vers /autre (par exemple on avait une catégorie
+  // jquery et on a déplacé les articles)
+
+  // si on voulait gérer un ensemble de redirections, on pourrait par exemple avoir
+  // un tableau d'objets (oldUrl: , newUrl: )
   <div id="blog">
     <Header categories={categoriesData} />
     <Switch>
+      <Redirect from="/jquery" to="/autre" />
       {categoriesData.map((category) => (
         <Route key={category.label} exact path={category.route}>
           <Posts posts={filterPostsByCategory(postsData, category)} />
