@@ -9,6 +9,7 @@ import { filterPostsByCategory } from 'src/utils/selectors';
 import Header from 'src/components/Header';
 import Posts from 'src/components/Posts';
 import Footer from 'src/components/Footer';
+import SinglePost from 'src/components/Posts/SinglePost';
 // Data
 import categoriesData from 'src/data/categories';
 import postsData from 'src/data/posts';
@@ -33,6 +34,11 @@ const App = () => (
       {categoriesData.map((category) => (
         <Route key={category.label} exact path={category.route}>
           <Posts posts={filterPostsByCategory(postsData, category)} />
+        </Route>
+      ))}
+      {postsData.map((post) => (
+        <Route key={post.slug} path={`/post/${post.slug}`}>
+          <SinglePost post={post} />
         </Route>
       ))}
       <Route>

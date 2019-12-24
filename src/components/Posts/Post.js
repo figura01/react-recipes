@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 // == Composant
 const Post = ({ title, category, excerpt }) => (
-  <article className="post">
+  <article>
     <h2 className="post-title">{title}</h2>
     <h3 className="post-category">{category}</h3>
     <p className="post-excerpt">{excerpt}</p>
