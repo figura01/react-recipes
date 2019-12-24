@@ -35,18 +35,21 @@ class App extends React.Component {
 
   // Rendu du composant
   render() {
-    const filteredPosts = filterPostsByCategory(postsData, categoriesData[2]);
-    console.log(filteredPosts);
+    // const filteredPostsReact = filterPostsByCategory(postsData, categoriesData[2]);
+    // const filteredPostsAngular = filterPostsByCategory(postsData, categoriesData[1]);
+    // console.log(filteredPosts);
+
+    // Route : si on ne met pas "exact", la comparaison est "le chemin commence par ..."
+    // avec exact : "le chemin est exactement ..."
 
     return (
       <div id="blog">
         <Header categories={categoriesData} onCategoryClick={this.handleClick} />
-        <Route exact path="/">
-          <Posts posts={postsData} />
-        </Route>
-        <Route path="/react">
-          <Posts posts={filteredPosts} />
-        </Route>
+        {categoriesData.map((category) => (
+          <Route key={category.label} exact path={category.route}>
+            <Posts posts={filterPostsByCategory(postsData, category)} />
+          </Route>
+        ))}
         <Footer />
       </div>
     );
