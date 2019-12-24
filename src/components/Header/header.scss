@@ -13,5 +13,10 @@
     &:hover {
       color: $active-color;
     }
+
+    &-active {
+      // vert sapin ;)
+      color: forestgreen,
+    }
   }
 }
