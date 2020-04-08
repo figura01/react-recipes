@@ -14,6 +14,7 @@ import SinglePost from 'src/components/Posts/SinglePost';
 import categoriesData from 'src/data/categories';
 import postsData from 'src/data/posts';
 
+
 // == Composant
 const App = () => (
   // Route : si on ne met pas "exact", la comparaison est "le chemin commence par ..."
